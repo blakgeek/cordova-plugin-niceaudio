@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="com.blakgeek.cordova.plugin.nicewebaudio" version="0.1.0" xmlns="http://apache.org/cordova/ns/plugins/1.0">
+    <name>NiceAudio</name>
+    <description>Makes WebAudio play nice on iOS</description>
+    <js-module name="NiceAudio" src="www/NiceAudio.js">
+        <clobbers target="cordova.plugins.NiceAudio" />
+    </js-module>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="NiceAudio">
+                <param name="ios-package" value="CDVNiceAudio" />
+                <param name="onload" value="true"/>
+            </feature>
+        </config-file>
+        <source-file src="src/ios/CDVNiceAudio.m" />
+    </platform>
+</plugin>
