@@ -10,9 +10,14 @@
 @implementation CDVNiceAudio
 
 - (void)pluginInitialize {
-    // make sure audio doesn't take over should probably add a flag to control this
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:nil];
-    //[[AVAudioSession sharedInstance] setActive:YES error:nil];
+    // set audio category
+    NSError *setCategoryError = nil;
+    BOOL success = [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryAmbient withOptions:AVAudioSessionCategoryOptionDuckOthers error: &setCategoryError];
+
+    if (!success) {
+        /* handle the error in setCategoryError */
+        NSLog(@"AVAudioSession EROR");
+    }
 }
 
 @end
